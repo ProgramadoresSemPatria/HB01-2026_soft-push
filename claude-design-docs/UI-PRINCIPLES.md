@@ -119,7 +119,7 @@ Reuse names from [`prototype/components.jsx`](./prototype/components.jsx):
 | `ForgeTimelineItem` | reasoning / artifact / decision rows |
 | `ChatBubble` | Onboarding + mentor |
 | `PrimaryButton` / `GhostButton` | Actions |
-| `DeployBadge` | Global fixed footer (`z-auto`) — deploy SHA/time + API health dot; stays **below** drawers (`z-40`/`z-50`); `local dev` when build env unset |
+| `DeployBadge` | Global fixed footer (`z-auto`) — deploy SHA/time + API health dot (same-origin `/career-forge/health` in labs rewrite mode); stays **below** drawers (`z-40`/`z-50`); `local dev` when build env unset |
 | `ChecklistProgress` | Shared study progress UI — `compact` (canvas card: `x/y` + thin mint bar) or `full` (drawer: label, bar, disclaimer); stats from `checklist-progress-stats.ts` |
 | `checklist-progress-stats` | Pure helpers: `getChecklistProgress` (per topic) + `getTrailChecklistProgressPct` (item-pooled across topics via `sum completed / sum total`) |
 | `ArtifactShell` topbar | Right cluster `items-end` (actions baseline with track title); single `mentor-report-link` ghost action (`topbarActionClass`, `h-9`); track name right — **no** progress ring |

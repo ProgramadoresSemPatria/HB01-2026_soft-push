@@ -97,8 +97,9 @@ Core models under `apps/backend/src/career_forge/db/models/`:
 ## Deployment baseline
 
 - Production images are published to `ghcr.io/pedroalano/career-forge-{backend,frontend}:latest`.
-- Canonical server deploy path is VPS + host nginx + `docker-compose.prod.yml` over SSH workflow.
-- Post-deploy verification is `curl -fsS "https://$API_DOMAIN/health"` (no Python dependency on VPS image).
+- Canonical server deploy path is VPS + host nginx + `docker-compose.prod.yml` over SSH workflow (still Docker/VPS — no OpenNext).
+- Frontend `basePath: /career-forge` for labs path hosting (e.g. `https://labs.borderlesscoding.com/career-forge`). Same-origin API mode: leave `NEXT_PUBLIC_BACKEND_URL` / `NEXT_PUBLIC_API_URL` empty; Next rewrites to `API_INTERNAL_URL`; set `CORS_ORIGINS=https://labs.borderlesscoding.com` on the backend.
+- Post-deploy verification is `curl -fsS "https://$API_DOMAIN/health"` (no Python dependency on VPS image). Detail: [engineering/DEPLOY-VPS.md](./engineering/DEPLOY-VPS.md).
 
 ## AI execution layer (HAC-32)
 

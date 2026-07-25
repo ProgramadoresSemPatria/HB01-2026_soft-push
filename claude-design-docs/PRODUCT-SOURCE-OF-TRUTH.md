@@ -178,7 +178,8 @@ Prototype entry: [`prototype/index.html`](./prototype/index.html) or [`prototype
 | Mentor evidence report | Dense paragraph `mentor_summary`; slug as headline; raw `goal_id` as Goal | N/A | **`/report`** — `MentorReportView`: `formatGoalForDisplay` + backend `_resolve_goal_display` (slug `ai-ml` → `AI & ML Engineer`; human strings pass through); `formatNodeTitleForDisplay` for topics; structured **Mentor summary** — gaps / correct answers / next step bullets; legacy `mentor_summary` split when structured fields empty; list-shaped StudyPlan evidence on backend | **Code wins** — mentor scan UX | 2026-05-30 |
 | Forge events | Mock `FORGE_SCRIPT` | SSE from FastAPI (HAC-18) | SSE wired | Map SSE to timeline UI only | HAC-18 |
 | Prod persistence | Postgres diagnosis + graph runs | InMemory stores | HAC-58 — auto postgres when ENV=production | **Code wins** | HAC-58 |
-| Deploy badge (global footer) | Not in prototype | N/A | Fixed bottom strip on all routes — `DeployBadge` in root layout (`z-auto`, not `z-50`) so `NodeDrawer` / `MentorDrawer` (`z-40` backdrop, `z-50` panel) paint above; `local dev` when `NEXT_PUBLIC_BUILD_*` unset; prod `deploy {sha} · {time}`; health dot polls `GET /health` | **Code wins** — operational debug chrome below modals; not pitch UX | 2026-05-28 |
+| Deploy badge (global footer) | Not in prototype | N/A | Fixed bottom strip on all routes — `DeployBadge` in root layout (`z-auto`, not `z-50`) so `NodeDrawer` / `MentorDrawer` (`z-40` backdrop, `z-50` panel) paint above; `local dev` when `NEXT_PUBLIC_BUILD_*` unset; prod `deploy {sha} · {time}`; health dot polls same-origin `GET {basePath}/health` (labs) or configured API origin `/health` | **Code wins** — operational debug chrome below modals; not pitch UX | 2026-07-24 |
+| Labs path / same-origin API | App routes documented without host prefix | N/A (static HTML) | Next `basePath: /career-forge` + `NEXT_PUBLIC_BASE_PATH`; docs routes (`/`, `/onboarding`, …) are App Router paths — public URL is `/career-forge` + path. When `NEXT_PUBLIC_BACKEND_URL` / `NEXT_PUBLIC_API_URL` empty, `api-client` + `deploy-info` fetch same-origin `/career-forge/diagnosis|forge|…` and `/career-forge/health`; rewrites proxy to `API_INTERNAL_URL` (prefixes include knowledge-gaps, tutor, exact `/health`). Labs CORS: `CORS_ORIGINS=https://labs.borderlesscoding.com`. Still Docker/VPS — no OpenNext | **Code wins** — labs gateway; see [DEPLOY-VPS](../docs/engineering/DEPLOY-VPS.md) | 2026-07-24 |
 
 ---
 
@@ -203,4 +204,4 @@ Rule: [.cursor/rules/ui-product-sync.mdc](../.cursor/rules/ui-product-sync.mdc) 
 
 ---
 
-*Last updated: 2026-05-30 — `/report` human Goal labels + structured summary*
+*Last updated: 2026-07-24 — labs `basePath` `/career-forge` + same-origin API rewrites*

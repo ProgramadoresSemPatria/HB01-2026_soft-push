@@ -17,7 +17,7 @@ Goal → Onboarding pill rounds → Editable diagnosis → [Generate roadmap] �
 
 ### Global operational chrome (all routes)
 
-Fixed bottom **deploy badge** on every screen (not in prototype): short git SHA + build time in production (`NEXT_PUBLIC_BUILD_*` from CI); `local dev` when unset; colored dot from live `GET /health`. **`z-auto`** so node/mentor drawers (`z-50`) are never covered by the footer. Low-contrast, does not replace pitch demo checks. See [PRODUCT-SOURCE-OF-TRUTH.md](./PRODUCT-SOURCE-OF-TRUTH.md) Implementation notes · [DEPLOY-VPS.md](../docs/engineering/DEPLOY-VPS.md).
+Fixed bottom **deploy badge** on every screen (not in prototype): short git SHA + build time in production (`NEXT_PUBLIC_BUILD_*` from CI); `local dev` when unset; colored dot from live API health (`GET /career-forge/health` same-origin under labs `basePath`, or `{API origin}/health` when `NEXT_PUBLIC_BACKEND_URL` / `NEXT_PUBLIC_API_URL` set). **`z-auto`** so node/mentor drawers (`z-50`) are never covered by the footer. Low-contrast, does not replace pitch demo checks. App Router paths in this doc omit `basePath`; public labs URLs are under `/career-forge`. See [PRODUCT-SOURCE-OF-TRUTH.md](./PRODUCT-SOURCE-OF-TRUTH.md) Implementation notes · [DEPLOY-VPS.md](../docs/engineering/DEPLOY-VPS.md).
 
 ---
 
